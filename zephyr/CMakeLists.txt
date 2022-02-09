@@ -715,6 +715,14 @@ zephyr_library_sources_ifdef(CONFIG_DW_DMA
 	${SOF_DRIVERS_PATH}/dw/dma.c
 )
 
+zephyr_library_sources_ifdef(CONFIG_COMP_COPIER
+        ${SOF_AUDIO_PATH}/copier.c
+)
+
+zephyr_library_sources_ifdef(CONFIG_COMP_BASEFW_IPC4
+    ${SOF_AUDIO_PATH}/base_fw.c
+)
+
 zephyr_library_link_libraries(SOF)
 target_link_libraries(SOF INTERFACE zephyr_interface)
 
