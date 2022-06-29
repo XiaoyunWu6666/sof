@@ -234,6 +234,13 @@ Otherwise, all firmware files are installed in the same staging directory by def
 			parser.print_help()
 			sys.exit(0)
 
+	if args.fw_naming == 'AVS':
+		if not args.use_platform_subdir:
+			args.use_platform_subdir=True
+			warnings.warn(f"Argument --fw-naming 'AVS' must go with using --use-platform-subdir. Already enable it automatically.")
+		if args.ipc != "IPC4":
+			args.ipc="IPC4"
+			warnings.warn(f"Argument --fw-naming 'AVS' must go with using -i IPC4. Already enable it automatically.")
 	if args.zephyr_ref and not args.clone_mode:
 		raise RuntimeError(f"Argument -z without -c makes no sense")
 	if args.clone_mode and not args.zephyr_ref:
